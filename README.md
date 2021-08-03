@@ -21,3 +21,9 @@ The details of all the functionality of the system and how the user must interac
 - These command files are then fed to the functionality implemented previously to process it and the corresponding output files are generated.
 - These output files are then sent to the client, which receives them and saves them.
 - The output files received by clients show the output at each step of the processing and act as a log to confirm that the specified tasks were in fact performed.
+
+## Dependencies and Libraries used
+Following python libraries were used along with the purpose of use:
+1. Math library was used briefly to handle a trivial calculation
+2. Anytree library was obtained from pypi and a custom tree data structure was built after inheriting from the Anytree base NodeMixin class, and that tree data structure was used to keep track of the files and the memory storage locations and also for creating and visualizing a memory map.
+3. Threading library used for creating threads
