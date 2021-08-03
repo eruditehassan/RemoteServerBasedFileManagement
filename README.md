@@ -11,3 +11,13 @@ The system was later modified to make it a multi-threaded file management system
 ## Remote Server based File Management
 The current modification is the implementation of a remote server-based file management where the commands can be sent to a remote server (following the same working as the previous version), then they are processed and executed, and the output generated is sent back to the client as a confirmation of the successful execution of the commands. This system now has two additional files, `server.py` and `client.py`. The main functionality would be paired with the server.py by importing the functionality from previously done work. The client.py would have client functionality to send the commands to the remote server and then receive the output from server and store it.
 The server is multi-threaded and can handle any number of clients, although the number of clients must be known in advance so that a specified number of threads are executed. Client file is also designed such that multiple threads can be run on the client.py file, so that even if a single client is connected with the server, it would do the processing in parallel way to achieve maximum performance.
+
+## System Functions and User Guide
+The details of all the functionality of the system and how the user must interact with the system is given below:
+- Firstly, the server.py file is run. The previously implemented functionality must be kept in the same folder as the server.py file as its functionality is built on top of the previously implemented functionality.
+- For the client side, the requirement is that the input files having commands must be kept in the same directory as the client.py file, and they must be named in the following format `input_thread[x]`, where x is 1,2,3 and so on.
+- The server.py must be run first, then client.py would be run. The client would automatically connect with the server and start sending the commands and receiving the output.
+- The first step would be to send the input command files from client to server, these command files are received by the server and are saved in a folder.
+- These command files are then fed to the functionality implemented previously to process it and the corresponding output files are generated.
+- These output files are then sent to the client, which receives them and saves them.
+- The output files received by clients show the output at each step of the processing and act as a log to confirm that the specified tasks were in fact performed.
