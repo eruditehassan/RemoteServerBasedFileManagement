@@ -27,3 +27,10 @@ Following python libraries were used along with the purpose of use:
 1. Math library was used briefly to handle a trivial calculation
 2. Anytree library was obtained from pypi and a custom tree data structure was built after inheriting from the Anytree base NodeMixin class, and that tree data structure was used to keep track of the files and the memory storage locations and also for creating and visualizing a memory map.
 3. Threading library used for creating threads
+
+## Limitations of the system
+The system is performing its job as desired, although there is still some room for improvement.
+- The major limitation in the system is that it only works for devices working in a closed network environment, like a private network connecting various computers by LAN.
+- The system can be improved to show the console output, in addition to the output file so that the client gets better insights of the working of the system.
+- One more improvement could be to build a Graphical User Interface (GUI) for the client side so that the interaction is smoother.
+- The system can also be improved by deploying it on some cloud platform like AWS or Azure and allowing clients from anywhere to connect to it and perform operations.
