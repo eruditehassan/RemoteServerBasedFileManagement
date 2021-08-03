@@ -1,5 +1,5 @@
 # Remote Server Based File Management System
-Remote Server Based Operating System Level File Management System
+Remote Server Based Operating System Level Multi Threaded File Management System
 
 ## File Management System Description
 The implemented system is a file management system. It uses a single data.dat file as a main directory which further consists of small files, which are created by user. For example, if Data.dat file is of 1000 bytes i.e. 1KB. The file is further divided into 10 tracks with size of 100 bytes each.
