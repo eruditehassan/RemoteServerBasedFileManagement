@@ -7,3 +7,9 @@ We implemented a tree data structure to keep records of files in a directory. Da
 
 ## MultiThreaaded File Management System
 The system was later modified to make it a multi-threaded file management system. This system works with the help of threading library of python for creating threads and executing commands from input files in parallel manner. It is based on the previously built File management system. It parses commands and values from the input files and executes those commands with the help of values accordingly. The major benefit in this improvement is that multiple operations are performed in parallel and better performance is achieved comparatively.
+
+## Remote Server based File Management
+The current modification is the implementation of a remote server-based file management where the commands can be sent to a remote server (following the same working as the previous version), then they are processed and executed, and the output generated is sent back to the client as a confirmation of the successful execution of the commands. This system now has two additional files, server.py and client.py. The main functionality would be paired with the server.py by importing the functionality from previously done work. The client.py would have client functionality to send the commands to the remote server and then receive the output from server and store it.
+The server is multi-threaded and can handle any number of clients, although the number of clients must be known in advance so that a specified number of threads are executed. Client file
+CS330: Operating Systems Page 3
+is also designed such that multiple threads can be run on the client.py file, so that even if a single client is connected with the server, it would do the processing in parallel way to achieve maximum performance.
