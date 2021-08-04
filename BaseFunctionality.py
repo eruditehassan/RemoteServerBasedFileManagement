@@ -14,11 +14,11 @@ class DataNode(NodeMixin):
 
 files = {}
 nodes = {}
-
+opened_files = {}
 # Root file class
 
 class root_file():
-    def __init__(self,name = "data.dat", size = 1000, track_size = 100):
+    def __init__(self,name = "data.dat", size = 10000, track_size = 100):
         self.name = name
         self.size = size
         self.track_size = track_size
@@ -151,9 +151,9 @@ class FileObj():
  
 
 # Main required Functions
-def open_file(fname, mode="r+w"):
-    """ Modes: r = read, w = write, r+w = read and write (append) """
+def open_file(fname):
     files[fname] = FileObj(fname,mode)
+    files[fname].open = True
     print("File has been opened!")
     return files[fname]
 
@@ -161,6 +161,7 @@ def create(fname, p = nodes["root"]):
     print("File has been created!")
     open_file(fname)
     nodes[fname] = DataNode(files[fname].name, parent=p)
+    opened_files[fname] = 0
 
 def delete(fname):
     nodes[fname].parent = None
@@ -182,86 +183,86 @@ def makeDir(fname):
 
 
 
-# while True:
-#     print("What operation do you want to perform:\n1. Create File \n2. Delete File \n3. Open File \n4. Close File \n5. Write to file \n6. Write to file at \n7. Read from file \n 8. Read from file at \n9. Make Directory \n10. Change Directory \n11. Show memory map \n12. Exit")
-#     decision = int(input())
-#     if (decision == 1):
-#         file_name = input("Enter the name of the file: ")
-#         create(file_name)
-#         print("File created!")
-#     elif (decision == 2):
-#         file_name = input("Enter the name of the file: ")
-#         if file_name in files.keys():
-#             delete(file_name)
-#             print("File deleted")
-#         else:
-#             print("File does not exist")
-#     elif (decision == 3):
-#         file_name = input("Enter the name of the file: ")
-#         if file_name in files.keys():
-#             f = open(file_name)
-#             print("File opened")
-#         else:
-#             print("File does not exist")
+while True:
+    print("What operation do you want to perform:\n1. Create File \n2. Delete File \n3. Open File \n4. Close File \n5. Write to file \n6. Write to file at \n7. Read from file \n 8. Read from file at \n9. Make Directory \n10. Change Directory \n11. Show memory map \n12. Exit")
+    decision = int(input())
+    if (decision == 1):
+        file_name = input("Enter the name of the file: ")
+        create(file_name)
+        print("File created!")
+    elif (decision == 2):
+        file_name = input("Enter the name of the file: ")
+        if file_name in files.keys():
+            delete(file_name)
+            print("File deleted")
+        else:
+            print("File does not exist")
+    elif (decision == 3):
+        file_name = input("Enter the name of the file: ")
+        if file_name in files.keys():
+            f = open(file_name)
+            print("File opened")
+        else:
+            print("File does not exist")
 
-#     elif (decision == 4):
-#         file_name = input("Enter the name of the file: ")
-#         if file_name in files.keys():
-#             close(file_name)
-#             print("File closed")
-#         else:
-#             print("File does not exist")
+    elif (decision == 4):
+        file_name = input("Enter the name of the file: ")
+        if file_name in files.keys():
+            close(file_name)
+            print("File closed")
+        else:
+            print("File does not exist")
 
-#     elif (decision == 5):
-#         file_name = input("Enter the name of the file: ")
-#         if file_name in files.keys():
-#             text = input("Enter the text to be written on file: ")
-#             files[file_name].write_to_file(text)
-#             print("Given content written to file successfully!")
-#         else:
-#             print("File does not exist")
+    elif (decision == 5):
+        file_name = input("Enter the name of the file: ")
+        if file_name in files.keys():
+            text = input("Enter the text to be written on file: ")
+            files[file_name].write_to_file(text)
+            print("Given content written to file successfully!")
+        else:
+            print("File does not exist")
 
-#     elif (decision == 6):
-#         file_name = input("Enter the name of the file: ")
-#         position = int(input("What position do you want to write at: "))
-#         if file_name in files.keys():
-#             text = input("Enter the text to be written on file: ")
-#             files[file_name].write_to_file_at(text,position)
-#             print("Given content written to file successfully!")
-#         else:
-#             print("File does not exist")
+    elif (decision == 6):
+        file_name = input("Enter the name of the file: ")
+        position = int(input("What position do you want to write at: "))
+        if file_name in files.keys():
+            text = input("Enter the text to be written on file: ")
+            files[file_name].write_to_file_at(text,position)
+            print("Given content written to file successfully!")
+        else:
+            print("File does not exist")
 
-#     elif (decision == 7):
-#         file_name = input("Enter the name of the file: ")
-#         if file_name in files.keys():
-#             print("Reading from file: ")
-#             print(files[file_name].read_from_file())
-#         else:
-#             print("File does not exist")
+    elif (decision == 7):
+        file_name = input("Enter the name of the file: ")
+        if file_name in files.keys():
+            print("Reading from file: ")
+            print(files[file_name].read_from_file())
+        else:
+            print("File does not exist")
 
-#     elif (decision == 8):
-#         file_name = input("Enter the name of the file: ")
-#         position = int(input("Enter byte position to read the file: "))
-#         size = int(input("Enter the size of read: "))
-#         if file_name in files.keys():
-#             print("Reading from file: ")
-#             print(files[file_name].read_from_file_at(position,size))
-#         else:
-#             print("File does not exist")
+    elif (decision == 8):
+        file_name = input("Enter the name of the file: ")
+        position = int(input("Enter byte position to read the file: "))
+        size = int(input("Enter the size of read: "))
+        if file_name in files.keys():
+            print("Reading from file: ")
+            print(files[file_name].read_from_file_at(position,size))
+        else:
+            print("File does not exist")
     
-#     elif (decision == 9):
-#         directory = input("Enter name of the new directory: ")
-#         makeDir(directory)
+    elif (decision == 9):
+        directory = input("Enter name of the new directory: ")
+        makeDir(directory)
 
-#     elif (decision == 10):
-#         file_name = input("Enter the name of the file whose directory is to be changed: ")
-#         target_directory = input("Enter name of target directory: ")
-#         files[file_name].chDir(target_directory)
+    elif (decision == 10):
+        file_name = input("Enter the name of the file whose directory is to be changed: ")
+        target_directory = input("Enter name of target directory: ")
+        files[file_name].chDir(target_directory)
 
-#     elif (decision == 11):
-#         show_memory_map()
+    elif (decision == 11):
+        show_memory_map()
     
-#     elif (decision == 12):
-#         break
-#     else:
-#         print("Invalid input")
+    elif (decision == 12):
+        break
+    else:
+        print("Invalid input")
