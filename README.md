@@ -12,6 +12,16 @@ The system was later modified to make it a multi-threaded file management system
 The current modification is the implementation of a remote server-based file management where the commands can be sent to a remote server (following the same working as the previous version), then they are processed and executed, and the output generated is sent back to the client as a confirmation of the successful execution of the commands. This system now has two additional files, `server.py` and `client.py`. The main functionality would be paired with the server.py by importing the functionality from previously done work. The client.py would have client functionality to send the commands to the remote server and then receive the output from server and store it.
 The server is multi-threaded and can handle any number of clients, although the number of clients must be known in advance so that a specified number of threads are executed. Client file is also designed such that multiple threads can be run on the client.py file, so that even if a single client is connected with the server, it would do the processing in parallel way to achieve maximum performance.
 
+## Remote server improvement: Limiting User Access to files
+In this part, some minor improvements were made. The overall specification of those improvements is:
+1. If a user places request for more than 5 files, then that thread must wait for the execution of other threads.
+2. Each file can only be accessed by 3 users
+
+
+It was accomplished by writing a parser that initially parses the number of files to which a user is requesting access to, if it is more than 5 files in a single session, then that thread is made to wait, until all the other threads have completed their execution. It is accomplished by keeping track of the completion state of all the threads at all times during the execution of the program.
+
+The second task was also done similarly, by keeping track of the number of accesses to each file, and if it becomes equal to 3, then no thread is allowed to access that file anymore.
+
 ## System Functions and User Guide
 The details of all the functionality of the system and how the user must interact with the system is given below:
 - Firstly, the server.py file is run. The previously implemented functionality must be kept in the same folder as the server.py file as its functionality is built on top of the previously implemented functionality.
@@ -34,3 +44,5 @@ The system is performing its job as desired, although there is still some room f
 - The system can be improved to show the console output, in addition to the output file so that the client gets better insights of the working of the system.
 - One more improvement could be to build a Graphical User Interface (GUI) for the client side so that the interaction is smoother.
 - The system can also be improved by deploying it on some cloud platform like AWS or Azure and allowing clients from anywhere to connect to it and perform operations.
+
+
