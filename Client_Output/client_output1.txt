@@ -3,3 +3,11 @@ File 4.txt has been created
 Data has been written to file: 1.txt 
 File: 4.txt has been deleted!
 Reading data from file: 1.txt 
+File 8.txt has been created
+Data has been written to file: 8.txt 
+File 9.txt has been created
+Data has been written to file: 9.txt 
+File 10.txt has been created
+Data has been written to file: 10.txt 
+File 11.txt has been created
+Data has been written to file: 11.txt 
