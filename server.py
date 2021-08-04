@@ -1,4 +1,4 @@
-from lab_9 import *
+from MultiThreadedFileManagement import *
 from threading import Thread
 import socket
 import os
